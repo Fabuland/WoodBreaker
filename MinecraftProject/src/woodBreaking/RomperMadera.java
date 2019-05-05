@@ -31,7 +31,8 @@ public class RomperMadera extends JFrame {
 	JPanel woodMenu;
 	JButton madera, comprarhMadera, comprarhPiedra, comprarhHierro, comprarhDiamante;
 	JToggleButton hachaMadera, hachaPiedra, hachaHierro, hachaDiamante;
-	JLabel woodBreakerTitle, fabuCopyright, oroText;
+	JLabel woodBreakerTitle, fabuCopyright, oroText, oroImage2, oroText2, oroImage3, oroText3, oroImage4, oroText4,
+			oroImage5, oroText5;
 	int oro, tiempoP;
 	Timer time;
 	Image cursorMine = new ImageIcon("src\\pic\\hand.png").getImage();
@@ -86,21 +87,21 @@ public class RomperMadera extends JFrame {
 		madera.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
-				//cambiarMadera(tiempoP);
+				// cambiarMadera(tiempoP);
 
 			}
 		});
 		madera.addMouseListener(new MouseListener() {
 
-		    @Override
-		    public void mousePressed(MouseEvent e) {
-		    	time = new Timer(tiempoP, null);
+			@Override
+			public void mousePressed(MouseEvent e) {
+				time = new Timer(tiempoP, null);
 				ActionListener listener = new ActionListener() {
 					int cont;
 
 					public void actionPerformed(ActionEvent e) {
-							cont++;
-							cambiarTextura(cont);
+						cont++;
+						cambiarTextura(cont);
 						if (cont == 11) {
 							oro++;
 							oroText.setText(oro + "");
@@ -111,35 +112,34 @@ public class RomperMadera extends JFrame {
 				};
 				time.addActionListener(listener);
 				time.start();
-		    }
+			}
 
 			public void mouseClicked(MouseEvent arg0) {
-				
+
 			}
 
 			public void mouseEntered(MouseEvent e) {
-				
+
 			}
 
 			public void mouseExited(MouseEvent e) {
-				
+
 			}
 
 			public void mouseReleased(MouseEvent e) {
 				time.stop();
 				madera.setIcon(new ImageIcon("src\\pic\\Madera1.png"));
-				
+
 			}
 
 		});
 		woodMenu.add(madera);
-		
 
 		hachaMadera = new JToggleButton(new ImageIcon("src\\pic\\woodenaxedisabled.png"));
-		hachaMadera.setBounds(500, 120, 60, 60);
+		hachaMadera.setBounds(460, 120, 60, 60);
 		hachaMadera.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if(hachaMadera.isSelected()) {
+				if (hachaMadera.isSelected()) {
 					hachaPiedra.setSelected(false);
 					hachaHierro.setSelected(false);
 					hachaDiamante.setSelected(false);
@@ -151,22 +151,53 @@ public class RomperMadera extends JFrame {
 					Image hachaMadImg = new ImageIcon("src\\pic\\woodenaxe.png").getImage();
 					setCursor(getToolkit().createCustomCursor(hachaMadImg, hotspot, cursorName));
 					hachaMadera.setIcon(new ImageIcon("src\\pic\\woodenaxeable.png"));
-				}else if (!hachaMadera.isSelected()) {
+				} else if (!hachaMadera.isSelected()) {
 					tiempoP = 320;
 					System.out.println(tiempoP);
 					setCursor(getToolkit().createCustomCursor(cursorMine, hotspot, cursorName));
 					hachaMadera.setIcon(new ImageIcon("src\\pic\\woodenaxedisabled.png"));
 				}
-				
+
 			}
 		});
+		hachaMadera.setEnabled(false);
 		woodMenu.add(hachaMadera);
-		
+
+		comprarhMadera = new JButton(new ImageIcon("src\\pic\\comprar.png"));
+		comprarhMadera.setBounds(540, 130, 201, 40);
+		comprarhMadera.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (oro >= 5) {
+					oro = oro - 5;
+					oroText.setText(oro + "");
+					hachaMadera.setEnabled(true);
+					oroImage2.setVisible(false);
+					oroText2.setVisible(false);
+					comprarhMadera.setVisible(false);
+				}
+			}
+		});
+		comprarhMadera.setOpaque(false);
+		comprarhMadera.setContentAreaFilled(false);
+		comprarhMadera.setBorderPainted(false);
+
+		woodMenu.add(comprarhMadera);
+
+		oroImage2 = new JLabel(new ImageIcon("src\\pic\\oroIngot.png"));
+		oroImage2.setBounds(850, 125, 50, 50);
+		woodMenu.add(oroImage2);
+
+		oroText2 = new JLabel("5");
+		oroText2.setBounds(800, 125, 20, 50);
+		oroText2.setFont(new Font("NSimSun", Font.BOLD, 35));
+		oroText2.setForeground(Color.white);
+		woodMenu.add(oroText2);
+
 		hachaPiedra = new JToggleButton(new ImageIcon("src\\pic\\stoneaxedisabled.png"));
-		hachaPiedra.setBounds(500, 200, 60, 60);
+		hachaPiedra.setBounds(460, 200, 60, 60);
 		hachaPiedra.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if(hachaPiedra.isSelected()) {
+				if (hachaPiedra.isSelected()) {
 					hachaMadera.setSelected(false);
 					hachaHierro.setSelected(false);
 					hachaDiamante.setSelected(false);
@@ -178,23 +209,54 @@ public class RomperMadera extends JFrame {
 					Image hachaMadImg = new ImageIcon("src\\pic\\stoneaxe.png").getImage();
 					setCursor(getToolkit().createCustomCursor(hachaMadImg, hotspot, cursorName));
 					hachaPiedra.setIcon(new ImageIcon("src\\pic\\stoneaxeable.png"));
-					
-				}else if (!hachaPiedra.isSelected()) {
+
+				} else if (!hachaPiedra.isSelected()) {
 					tiempoP = 320;
 					System.out.println(tiempoP);
 					setCursor(getToolkit().createCustomCursor(cursorMine, hotspot, cursorName));
 					hachaPiedra.setIcon(new ImageIcon("src\\pic\\stoneaxedisabled.png"));
 				}
-				
+
 			}
 		});
+		hachaPiedra.setEnabled(false);
 		woodMenu.add(hachaPiedra);
+
+		comprarhPiedra = new JButton(new ImageIcon("src\\pic\\comprar.png"));
+		comprarhPiedra.setBounds(540, 210, 201, 40);
+		comprarhPiedra.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (oro >= 10) {
+					oro = oro - 10;
+					oroText.setText(oro + "");
+					hachaPiedra.setEnabled(true);
+					oroImage3.setVisible(false);
+					oroText3.setVisible(false);
+					comprarhPiedra.setVisible(false);
+				}
+			}
+		});
+		comprarhPiedra.setOpaque(false);
+		comprarhPiedra.setContentAreaFilled(false);
+		comprarhPiedra.setBorderPainted(false);
+
+		woodMenu.add(comprarhPiedra);
 		
+		oroImage3 = new JLabel(new ImageIcon("src\\pic\\oroIngot.png"));
+		oroImage3.setBounds(850, 205, 50, 50);
+		woodMenu.add(oroImage3);
+
+		oroText3 = new JLabel("10");
+		oroText3.setBounds(800, 205, 40, 50);
+		oroText3.setFont(new Font("NSimSun", Font.BOLD, 35));
+		oroText3.setForeground(Color.white);
+		woodMenu.add(oroText3);
+
 		hachaHierro = new JToggleButton(new ImageIcon("src\\pic\\ironaxedisabled.png"));
-		hachaHierro.setBounds(500, 280, 60, 60);
+		hachaHierro.setBounds(460, 280, 60, 60);
 		hachaHierro.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if(hachaHierro.isSelected()) {
+				if (hachaHierro.isSelected()) {
 					hachaMadera.setSelected(false);
 					hachaPiedra.setSelected(false);
 					hachaDiamante.setSelected(false);
@@ -206,23 +268,54 @@ public class RomperMadera extends JFrame {
 					Image hachaMadImg = new ImageIcon("src\\pic\\ironaxe.png").getImage();
 					setCursor(getToolkit().createCustomCursor(hachaMadImg, hotspot, cursorName));
 					hachaHierro.setIcon(new ImageIcon("src\\pic\\ironaxeable.png"));
-					
-				}else if (!hachaHierro.isSelected()) {
+
+				} else if (!hachaHierro.isSelected()) {
 					tiempoP = 320;
 					System.out.println(tiempoP);
 					setCursor(getToolkit().createCustomCursor(cursorMine, hotspot, cursorName));
 					hachaHierro.setIcon(new ImageIcon("src\\pic\\ironaxedisabled.png"));
 				}
-				
+
 			}
 		});
+		hachaHierro.setEnabled(false);
 		woodMenu.add(hachaHierro);
+
+		comprarhHierro = new JButton(new ImageIcon("src\\pic\\comprar.png"));
+		comprarhHierro.setBounds(540, 290, 201, 40);
+		comprarhHierro.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (oro >= 15) {
+					oro = oro - 15;
+					oroText.setText(oro + "");
+					hachaHierro.setEnabled(true);
+					oroImage4.setVisible(false);
+					oroText4.setVisible(false);
+					comprarhHierro.setVisible(false);
+				}
+			}
+		});
+		comprarhHierro.setOpaque(false);
+		comprarhHierro.setContentAreaFilled(false);
+		comprarhHierro.setBorderPainted(false);
+
+		woodMenu.add(comprarhHierro);
 		
+		oroImage4 = new JLabel(new ImageIcon("src\\pic\\oroIngot.png"));
+		oroImage4.setBounds(850, 285, 50, 50);
+		woodMenu.add(oroImage4);
+
+		oroText4 = new JLabel("15");
+		oroText4.setBounds(800, 285, 40, 50);
+		oroText4.setFont(new Font("NSimSun", Font.BOLD, 35));
+		oroText4.setForeground(Color.white);
+		woodMenu.add(oroText4);
+
 		hachaDiamante = new JToggleButton(new ImageIcon("src\\pic\\diamondaxedisabled.png"));
-		hachaDiamante.setBounds(500, 360, 60, 60);
+		hachaDiamante.setBounds(460, 360, 60, 60);
 		hachaDiamante.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if(hachaDiamante.isSelected()) {
+				if (hachaDiamante.isSelected()) {
 					hachaMadera.setSelected(false);
 					hachaPiedra.setSelected(false);
 					hachaHierro.setSelected(false);
@@ -234,23 +327,54 @@ public class RomperMadera extends JFrame {
 					Image hachaMadImg = new ImageIcon("src\\pic\\diamondaxe.png").getImage();
 					setCursor(getToolkit().createCustomCursor(hachaMadImg, hotspot, cursorName));
 					hachaDiamante.setIcon(new ImageIcon("src\\pic\\diamondaxeable.png"));
-					
-				}else if (!hachaDiamante.isSelected()) {
+
+				} else if (!hachaDiamante.isSelected()) {
 					tiempoP = 320;
 					System.out.println(tiempoP);
 					setCursor(getToolkit().createCustomCursor(cursorMine, hotspot, cursorName));
 					hachaDiamante.setIcon(new ImageIcon("src\\pic\\diamondaxedisabled.png"));
 				}
-				
+
 			}
 		});
+		hachaDiamante.setEnabled(false);
 		woodMenu.add(hachaDiamante);
 
+		comprarhDiamante = new JButton(new ImageIcon("src\\pic\\comprar.png"));
+		comprarhDiamante.setBounds(540, 370, 201, 40);
+		comprarhDiamante.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (oro >= 20) {
+					oro = oro - 20;
+					oroText.setText(oro + "");
+					hachaDiamante.setEnabled(true);
+					oroImage5.setVisible(false);
+					oroText5.setVisible(false);
+					comprarhDiamante.setVisible(false);
+				}
+			}
+		});
+		comprarhDiamante.setOpaque(false);
+		comprarhDiamante.setContentAreaFilled(false);
+		comprarhDiamante.setBorderPainted(false);
+
+		woodMenu.add(comprarhDiamante);
+		
+		oroImage5 = new JLabel(new ImageIcon("src\\pic\\oroIngot.png"));
+		oroImage5.setBounds(850, 365, 50, 50);
+		woodMenu.add(oroImage5);
+
+		oroText5 = new JLabel("20");
+		oroText5.setBounds(800, 365, 40, 50);
+		oroText5.setFont(new Font("NSimSun", Font.BOLD, 35));
+		oroText5.setForeground(Color.white);
+		woodMenu.add(oroText5);
+
 		oro = 0;
-		oroText = new JLabel("0");
-		oroText.setBounds(220, 440, 80, 40);
+		oroText = new JLabel(oro + "");
+		oroText.setBounds(230, 440, 80, 40);
 		oroText.setFont(new Font("NSimSun", Font.BOLD, 35));
-		oroText.setForeground(Color.black);
+		oroText.setForeground(Color.white);
 		woodMenu.add(oroText);
 
 		JLabel oroImage = new JLabel(new ImageIcon("src\\pic\\oroIngot.png"));
