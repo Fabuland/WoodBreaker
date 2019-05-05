@@ -135,7 +135,7 @@ public class RomperMadera extends JFrame {
 		woodMenu.add(madera);
 		
 
-		hachaMadera = new JToggleButton(new ImageIcon("src\\pic\\woodenaxe.png"));
+		hachaMadera = new JToggleButton(new ImageIcon("src\\pic\\woodenaxedisabled.png"));
 		hachaMadera.setBounds(500, 120, 60, 60);
 		hachaMadera.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -143,21 +143,26 @@ public class RomperMadera extends JFrame {
 					hachaPiedra.setSelected(false);
 					hachaHierro.setSelected(false);
 					hachaDiamante.setSelected(false);
+					hachaPiedra.setIcon(new ImageIcon("src\\pic\\stoneaxedisabled.png"));
+					hachaHierro.setIcon(new ImageIcon("src\\pic\\ironaxedisabled.png"));
+					hachaDiamante.setIcon(new ImageIcon("src\\pic\\diamondaxedisabled.png"));
 					tiempoP = 160;
 					System.out.println(tiempoP);
 					Image hachaMadImg = new ImageIcon("src\\pic\\woodenaxe.png").getImage();
 					setCursor(getToolkit().createCustomCursor(hachaMadImg, hotspot, cursorName));
+					hachaMadera.setIcon(new ImageIcon("src\\pic\\woodenaxeable.png"));
 				}else if (!hachaMadera.isSelected()) {
 					tiempoP = 320;
 					System.out.println(tiempoP);
 					setCursor(getToolkit().createCustomCursor(cursorMine, hotspot, cursorName));
+					hachaMadera.setIcon(new ImageIcon("src\\pic\\woodenaxedisabled.png"));
 				}
 				
 			}
 		});
 		woodMenu.add(hachaMadera);
 		
-		hachaPiedra = new JToggleButton(new ImageIcon("src\\pic\\stoneaxe.png"));
+		hachaPiedra = new JToggleButton(new ImageIcon("src\\pic\\stoneaxedisabled.png"));
 		hachaPiedra.setBounds(500, 200, 60, 60);
 		hachaPiedra.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -165,22 +170,27 @@ public class RomperMadera extends JFrame {
 					hachaMadera.setSelected(false);
 					hachaHierro.setSelected(false);
 					hachaDiamante.setSelected(false);
+					hachaMadera.setIcon(new ImageIcon("src\\pic\\woodenaxedisabled.png"));
+					hachaHierro.setIcon(new ImageIcon("src\\pic\\ironaxedisabled.png"));
+					hachaDiamante.setIcon(new ImageIcon("src\\pic\\diamondaxedisabled.png"));
 					tiempoP = 100;
 					System.out.println(tiempoP);
 					Image hachaMadImg = new ImageIcon("src\\pic\\stoneaxe.png").getImage();
 					setCursor(getToolkit().createCustomCursor(hachaMadImg, hotspot, cursorName));
+					hachaPiedra.setIcon(new ImageIcon("src\\pic\\stoneaxeable.png"));
 					
 				}else if (!hachaPiedra.isSelected()) {
 					tiempoP = 320;
 					System.out.println(tiempoP);
 					setCursor(getToolkit().createCustomCursor(cursorMine, hotspot, cursorName));
+					hachaPiedra.setIcon(new ImageIcon("src\\pic\\stoneaxedisabled.png"));
 				}
 				
 			}
 		});
 		woodMenu.add(hachaPiedra);
 		
-		hachaHierro = new JToggleButton(new ImageIcon("src\\pic\\ironaxe.png"));
+		hachaHierro = new JToggleButton(new ImageIcon("src\\pic\\ironaxedisabled.png"));
 		hachaHierro.setBounds(500, 280, 60, 60);
 		hachaHierro.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -188,22 +198,27 @@ public class RomperMadera extends JFrame {
 					hachaMadera.setSelected(false);
 					hachaPiedra.setSelected(false);
 					hachaDiamante.setSelected(false);
+					hachaMadera.setIcon(new ImageIcon("src\\pic\\woodenaxedisabled.png"));
+					hachaPiedra.setIcon(new ImageIcon("src\\pic\\stoneaxedisabled.png"));
+					hachaDiamante.setIcon(new ImageIcon("src\\pic\\diamondaxedisabled.png"));
 					tiempoP = 75;
 					System.out.println(tiempoP);
 					Image hachaMadImg = new ImageIcon("src\\pic\\ironaxe.png").getImage();
 					setCursor(getToolkit().createCustomCursor(hachaMadImg, hotspot, cursorName));
+					hachaHierro.setIcon(new ImageIcon("src\\pic\\ironaxeable.png"));
 					
 				}else if (!hachaHierro.isSelected()) {
 					tiempoP = 320;
 					System.out.println(tiempoP);
 					setCursor(getToolkit().createCustomCursor(cursorMine, hotspot, cursorName));
+					hachaHierro.setIcon(new ImageIcon("src\\pic\\ironaxedisabled.png"));
 				}
 				
 			}
 		});
 		woodMenu.add(hachaHierro);
 		
-		hachaDiamante = new JToggleButton(new ImageIcon("src\\pic\\diamondaxe.png"));
+		hachaDiamante = new JToggleButton(new ImageIcon("src\\pic\\diamondaxedisabled.png"));
 		hachaDiamante.setBounds(500, 360, 60, 60);
 		hachaDiamante.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -211,15 +226,20 @@ public class RomperMadera extends JFrame {
 					hachaMadera.setSelected(false);
 					hachaPiedra.setSelected(false);
 					hachaHierro.setSelected(false);
+					hachaMadera.setIcon(new ImageIcon("src\\pic\\woodenaxedisabled.png"));
+					hachaPiedra.setIcon(new ImageIcon("src\\pic\\stoneaxedisabled.png"));
+					hachaHierro.setIcon(new ImageIcon("src\\pic\\ironaxedisabled.png"));
 					tiempoP = 50;
 					System.out.println(tiempoP);
 					Image hachaMadImg = new ImageIcon("src\\pic\\diamondaxe.png").getImage();
 					setCursor(getToolkit().createCustomCursor(hachaMadImg, hotspot, cursorName));
+					hachaDiamante.setIcon(new ImageIcon("src\\pic\\diamondaxeable.png"));
 					
 				}else if (!hachaDiamante.isSelected()) {
 					tiempoP = 320;
 					System.out.println(tiempoP);
 					setCursor(getToolkit().createCustomCursor(cursorMine, hotspot, cursorName));
+					hachaDiamante.setIcon(new ImageIcon("src\\pic\\diamondaxedisabled.png"));
 				}
 				
 			}
