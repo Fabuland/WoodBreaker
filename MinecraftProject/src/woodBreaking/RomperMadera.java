@@ -29,10 +29,9 @@ public class RomperMadera extends JFrame {
 
 	JFrame ventanaPrincipal;
 	JPanel woodMenu;
-	JButton madera, comprarhMadera, comprarhPiedra, comprarhHierro, comprarhDiamante;
+	JButton madera, comprarhMadera, comprarhPiedra, comprarhHierro, comprarhDiamante, woodBreakerTitle;
 	JToggleButton hachaMadera, hachaPiedra, hachaHierro, hachaDiamante;
-	JLabel woodBreakerTitle, fabuCopyright, oroText, oroImage2, oroText2, oroImage3, oroText3, oroImage4, oroText4,
-			oroImage5, oroText5;
+	JLabel fabuCopyright, oroText, oroImage2, oroText2, oroImage3, oroText3, oroImage4, oroText4, oroImage5, oroText5;
 	int oro, tiempoP;
 	Timer time;
 	Image cursorMine = new ImageIcon("src\\pic\\hand.png").getImage();
@@ -73,15 +72,45 @@ public class RomperMadera extends JFrame {
 		woodMenu.setVisible(true);
 		woodMenu.setLayout(null);
 
-		woodBreakerTitle = new JLabel(new ImageIcon("src\\pic\\woodBreaker.png"));
+		JLabel dragon = new JLabel(new ImageIcon("src\\pic\\oveja.gif"));
+		dragon.setBounds(167, 10, 172, 100);
+		dragon.setVisible(false);
+		woodMenu.add(dragon);
+
+		woodBreakerTitle = new JButton(new ImageIcon("src\\pic\\woodBreaker.png"));
+		woodBreakerTitle.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				woodBreakerTitle.setVisible(false);
+				dragon.setVisible(true);
+				Timer time = new Timer(25, null);
+				ActionListener listener = new ActionListener() {
+					int posDragon = 80;
+					public void actionPerformed(ActionEvent e) {
+						dragon.setBounds(posDragon, 10, 172, 100);
+						posDragon+= 7;
+						if(posDragon > 700) {
+							time.stop();
+							dragon.setVisible(false);
+							woodBreakerTitle.setVisible(true);
+							dragon.setBounds(167, 10, 172, 100);
+						}
+					}
+				};
+				time.addActionListener(listener);
+				time.start();
+			}
+		});
 		woodBreakerTitle.setBounds(167, 10, 625, 79);
+		woodBreakerTitle.setOpaque(false);
+		woodBreakerTitle.setContentAreaFilled(false);
+		woodBreakerTitle.setBorderPainted(false);
 		woodMenu.add(woodBreakerTitle);
 
 		fabuCopyright = new JLabel(new ImageIcon("src\\pic\\fabuCopyright.png"));
 		fabuCopyright.setBounds(840, 480, 80, 11);
 		woodMenu.add(fabuCopyright);
 
-		tiempoP = 320;
+		tiempoP = 20;
 		madera = new JButton(new ImageIcon("src\\pic\\Madera1.png"));
 		madera.setBounds(120, 120, 300, 300);
 		madera.addActionListener(new ActionListener() {
@@ -241,7 +270,7 @@ public class RomperMadera extends JFrame {
 		comprarhPiedra.setBorderPainted(false);
 
 		woodMenu.add(comprarhPiedra);
-		
+
 		oroImage3 = new JLabel(new ImageIcon("src\\pic\\oroIngot.png"));
 		oroImage3.setBounds(850, 205, 50, 50);
 		woodMenu.add(oroImage3);
@@ -300,7 +329,7 @@ public class RomperMadera extends JFrame {
 		comprarhHierro.setBorderPainted(false);
 
 		woodMenu.add(comprarhHierro);
-		
+
 		oroImage4 = new JLabel(new ImageIcon("src\\pic\\oroIngot.png"));
 		oroImage4.setBounds(850, 285, 50, 50);
 		woodMenu.add(oroImage4);
@@ -359,7 +388,7 @@ public class RomperMadera extends JFrame {
 		comprarhDiamante.setBorderPainted(false);
 
 		woodMenu.add(comprarhDiamante);
-		
+
 		oroImage5 = new JLabel(new ImageIcon("src\\pic\\oroIngot.png"));
 		oroImage5.setBounds(850, 365, 50, 50);
 		woodMenu.add(oroImage5);
